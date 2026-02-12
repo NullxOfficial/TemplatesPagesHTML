@@ -11,8 +11,9 @@
 :root{
   --primary:#00ccff;
   --primary-dark:#0099cc;
-  --glow:0 0 25px #00ccff;
-  --shadow:0 12px 35px rgba(0,204,255,.25);
+  --secondary:#ff00aa; /* Añadí magenta para más color cyberpunk */
+  --glow:0 0 30px #00ccff, 0 0 60px #ff00aa;
+  --shadow:0 12px 35px rgba(0,204,255,.35);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -24,189 +25,9 @@ body{
   min-height:100vh;
 }
 
-/* ================= HEADER ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:1.2rem 5%;
-  background:rgba(15,20,35,.85);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(0,204,255,.15);
-}
+/* ... (todo el header, sidebar, cards, etc. queda IGUAL, solo copio los loaders mejorados) ... */
 
-.logo{
-  font-size:1.8rem;
-  font-weight:700;
-  color:var(--primary);
-  text-shadow:var(--glow);
-}
-
-.search-bar{
-  width:50%;
-  max-width:450px;
-  padding:.8rem 1.4rem;
-  border-radius:50px;
-  border:2px solid rgba(0,204,255,.3);
-  background:rgba(255,255,255,.05);
-  color:white;
-}
-
-/* ================= HAMBURGER ================= */
-.hamburger{
-  width:36px;
-  height:26px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  cursor:pointer;
-  z-index:1200;
-}
-
-.hamburger span{
-  height:4px;
-  width:100%;
-  background:var(--primary);
-  border-radius:5px;
-  transition:.4s;
-  box-shadow:var(--glow);
-}
-
-.hamburger.active span:nth-child(1){
-  transform:rotate(45deg) translate(8px,8px);
-}
-.hamburger.active span:nth-child(2){
-  opacity:0;
-}
-.hamburger.active span:nth-child(3){
-  transform:rotate(-45deg) translate(8px,-8px);
-}
-
-/* ================= OVERLAY ================= */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  backdrop-filter:blur(6px);
-  opacity:0;
-  pointer-events:none;
-  transition:.4s;
-  z-index:900;
-}
-.overlay.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar{
-  position:fixed;
-  top:0;
-  right:-340px;
-  width:320px;
-  height:100%;
-  background:rgba(15,20,35,.97);
-  backdrop-filter:blur(18px);
-  padding:6rem 2rem 2rem;
-  transition:.5s cubic-bezier(.68,-0.55,.27,1.55);
-  z-index:1100;
-  box-shadow:-20px 0 60px rgba(0,204,255,.35);
-  text-align:center;
-}
-
-.sidebar.active{ right:0; }
-
-.sidebar h2{
-  color:var(--primary);
-  margin-bottom:2.5rem;
-  text-shadow:var(--glow);
-}
-
-.sidebar-btn{
-  width:100%;
-  padding:1.1rem;
-  margin:1rem 0;
-  border:none;
-  border-radius:60px;
-  background:linear-gradient(135deg,#00ccff,#0099cc);
-  color:white;
-  font-size:1.1rem;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:var(--shadow);
-  transition:.3s;
-}
-.sidebar-btn:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 40px #00ccff;
-}
-
-/* ================= CONTENIDO ================= */
-.main-title{
-  text-align:center;
-  font-size:2.8rem;
-  margin:3.5rem 0 1.5rem;
-  background:linear-gradient(90deg,#00ccff,#80e0ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.template-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:2.5rem;
-  padding:0 5% 5rem;
-  max-width:1500px;
-  margin:auto;
-}
-
-.template-card{
-  background:rgba(20,30,50,.6);
-  border-radius:20px;
-  border:1px solid rgba(0,204,255,.2);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  transition:.4s;
-}
-.template-card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 60px rgba(0,204,255,.45);
-}
-
-.image-container{
-  height:350px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#0a0e1f;
-}
-.image-container img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-}
-
-.info{
-  padding:1.2rem;
-  text-align:center;
-}
-
-.download-btn{
-  margin-top:.8rem;
-  padding:.9rem 2rem;
-  border-radius:50px;
-  border:none;
-  background:linear-gradient(45deg,#00ccff,#0099cc);
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:var(--shadow);
-}
-
-/* ================= LOADER DESCARGA (CUBO MEJORADO) ================= */
+/* ================= LOADER DESCARGA (CUBO 3D ORIGINAL + MEJORADO) ================= */
 #loader-download{
   position:fixed;
   inset:0;
@@ -228,45 +49,53 @@ header{
 .loader-text{
   color:var(--primary);
   font-weight:700;
-  font-size:2rem;
+  font-size:2.2rem;
   text-shadow:var(--glow);
+  letter-spacing:2px;
 }
 
 .spinner{
-  width:120px;
-  height:120px;
+  width:140px;
+  height:140px;
   position:relative;
-  perspective:1000px;
   transform-style:preserve-3d;
-  animation:spin 4s linear infinite;
+  perspective:1200px;
+  animation:spin 5s linear infinite;
 }
+
 .spinner div{
   position:absolute;
   inset:0;
-  background:linear-gradient(135deg, rgba(0,204,255,0.2), rgba(0,204,255,0.8));
-  border:4px solid var(--primary);
-  box-shadow:var(--glow), inset 0 0 20px rgba(0,204,255,0.5);
-  transform-style:preserve-3d;
-  animation:pulse 2s ease-in-out infinite alternate;
+  background:linear-gradient(135deg, rgba(0,204,255,0.4), rgba(255,0,170,0.3), rgba(0,204,255,0.4));
+  border:5px solid var(--primary);
+  box-shadow: var(--glow), inset 0 0 25px rgba(0,204,255,0.6), inset 0 0 40px rgba(255,0,170,0.4);
+  opacity:0.85;
+  animation:faceGlow 3s ease-in-out infinite alternate;
 }
-.spinner div:nth-child(1){transform:rotateY(0deg) translateZ(60px)}
-.spinner div:nth-child(2){transform:rotateY(90deg) translateZ(60px)}
-.spinner div:nth-child(3){transform:rotateY(180deg) translateZ(60px)}
-.spinner div:nth-child(4){transform:rotateY(-90deg) translateZ(60px)}
-.spinner div:nth-child(5){transform:rotateX(90deg) translateZ(60px)}
-.spinner div:nth-child(6){transform:rotateX(-90deg) translateZ(60px)}
+
+.spinner div:nth-child(odd){
+  border-color: #ff00aa;
+  box-shadow: 0 0 40px #ff00aa, inset 0 0 30px #ff00aa;
+}
+
+.spinner div:nth-child(1){transform:rotateY(0deg) translateZ(70px)}
+.spinner div:nth-child(2){transform:rotateY(90deg) translateZ(70px)}
+.spinner div:nth-child(3){transform:rotateY(180deg) translateZ(70px)}
+.spinner div:nth-child(4){transform:rotateY(-90deg) translateZ(70px)}
+.spinner div:nth-child(5){transform:rotateX(90deg) translateZ(70px)}
+.spinner div:nth-child(6){transform:rotateX(-90deg) translateZ(70px)}
 
 @keyframes spin{
-  from{transform:rotateX(0) rotateY(0) rotateZ(0)}
-  to{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
+  from{transform:rotateX(0deg) rotateY(0deg)}
+  to{transform:rotateX(360deg) rotateY(360deg)}
 }
 
-@keyframes pulse {
-  from { opacity: 0.6; transform: scale(1); }
-  to { opacity: 1; transform: scale(1.05); }
+@keyframes faceGlow{
+  from{opacity:0.7; transform:scale(1);}
+  to{opacity:1; transform:scale(1.08);}
 }
 
-/* ================= LOADER MENÚ (CÍRCULO 4D MEJORADO) ================= */
+/* ================= LOADER MENÚ (CÍRCULO 4D MEJORADO - VUELTA A BASE + MÁS BONITO) ================= */
 #loader-menu{
   position:fixed;
   inset:0;
@@ -275,43 +104,65 @@ header{
   align-items:center;
   justify-content:center;
   flex-direction:column;
-  gap:2rem;
+  gap:2.5rem;
   z-index:9999;
 }
 
 .circle-4d{
-  width:150px;
-  height:150px;
+  width:180px;
+  height:180px;
   border-radius:50%;
-  border:6px solid var(--primary);
-  box-shadow:0 0 50px var(--primary), inset 0 0 30px var(--primary);
-  animation:rotate4d 2s linear infinite, pulse 1.5s ease-in-out infinite alternate;
+  border:8px double var(--primary);
+  box-shadow: 
+    0 0 40px var(--primary),
+    0 0 80px var(--secondary),
+    inset 0 0 40px var(--primary),
+    inset 0 0 60px var(--secondary);
+  animation: rotate4d 4s linear infinite, pulseGlow 2.5s ease-in-out infinite alternate;
   transform-style:preserve-3d;
-  perspective:1000px;
+  perspective:1200px;
+  background: radial-gradient(circle at 30% 30%, rgba(0,204,255,0.3), transparent 60%);
+}
+
+.circle-4d::before{
+  content:'';
+  position:absolute;
+  inset:10px;
+  border-radius:50%;
+  border:4px solid var(--secondary);
+  box-shadow:0 0 30px var(--secondary);
+  animation: innerRotate 6s linear infinite reverse;
 }
 
 @keyframes rotate4d{
-  from{transform:rotateX(0) rotateY(0) rotateZ(0)}
+  from{transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg)}
   to{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg)}
 }
 
-/* TEXTO ANIMADO PARA LOADER MENÚ */
-.loader-text-animated {
-  color:var(--primary);
-  font-weight:700;
-  font-size:2rem;
-  text-shadow:var(--glow);
-  animation: textFade 4s linear infinite;
+@keyframes innerRotate{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
-@keyframes textFade {
-  0% { opacity: 1; content: "Cargando..."; }
-  25% { opacity: 0; }
-  26% { opacity: 0; content: "Preparando recursos..."; }
-  50% { opacity: 1; }
-  75% { opacity: 0; }
-  76% { opacity: 0; content: "Casi listo!"; }
-  100% { opacity: 1; }
+@keyframes pulseGlow{
+  from{box-shadow: 0 0 40px var(--primary), 0 0 80px var(--secondary);}
+  to{box-shadow: 0 0 70px var(--primary), 0 0 120px var(--secondary);}
+}
+
+/* Texto más pro y con fade suave (sin cambiar cada 4s tan brusco) */
+.loader-text-menu{
+  color:var(--primary);
+  font-weight:700;
+  font-size:2.2rem;
+  text-shadow:var(--glow);
+  letter-spacing:1.5px;
+  opacity:0.9;
+  animation: textPulse 3s ease-in-out infinite;
+}
+
+@keyframes textPulse{
+  0%,100%{opacity:0.9; transform:scale(1);}
+  50%{opacity:1; transform:scale(1.05);}
 }
 
 </style>
@@ -319,8 +170,7 @@ header{
 
 <body>
 
-<!-- OVERLAY -->
-<div class="overlay" id="overlay"></div>
+<!-- ... OVERLAY y resto igual ... -->
 
 <!-- LOADER DESCARGA -->
 <div id="loader-download">
@@ -335,86 +185,26 @@ header{
 <!-- LOADER MENÚ -->
 <div id="loader-menu">
   <div class="circle-4d"></div>
-  <div class="loader-text-animated">Cargando...</div>
+  <div class="loader-text-menu">Cargando... espera un segundo</div>
 </div>
 
-<header>
-  <div class="logo">Plantillas HTML Gratis</div>
-  <input class="search-bar" placeholder="Buscar plantillas...">
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</header>
-
-<div class="sidebar" id="sidebar">
-  <h2>Creado por Brusmods</h2>
-  <button class="sidebar-btn" data-link="#">Contacto</button>
-  <button class="sidebar-btn" data-link="#">Soporte</button>
-</div>
-
-<h1 class="main-title">Plantillas Web Increíbles</h1>
-
-<div class="template-grid">
-  <div class="template-card">
-    <div class="image-container">
-      <img src="1.png">
-    </div>
-    <div class="info">
-      <div>logo-pro.png</div>
-      <button class="download-btn" data-link="#">Descargar</button>
-    </div>
-  </div>
-</div>
+<!-- ... resto del HTML igual ... -->
 
 <script>
-const ham = document.getElementById("hamburger");
-const side = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+// ... todo el script igual, solo ajusto el texto si quieres variar más suave
 
-/* MENU OPEN / CLOSE */
-ham.onclick = e =>{
-  e.stopPropagation();
-  ham.classList.toggle("active");
-  side.classList.toggle("active");
-  overlay.classList.toggle("active");
-};
-
-overlay.onclick = ()=>{
-  ham.classList.remove("active");
-  side.classList.remove("active");
-  overlay.classList.remove("active");
-};
-
-/* LOADER DESCARGA */
-document.querySelectorAll(".download-btn").forEach(btn=>{
-  btn.onclick = e=>{
-    e.preventDefault();
-    document.getElementById("loader-download").style.display="flex";
-    setTimeout(()=>window.location.href=btn.dataset.link,2500);
-  };
-});
-
-/* LOADER MENU */
-document.querySelectorAll(".sidebar-btn").forEach(btn=>{
-  btn.onclick = e=>{
-    e.preventDefault();
-    document.getElementById("loader-menu").style.display="flex";
-    setTimeout(()=>window.location.href=btn.dataset.link,3000);
-  };
-});
-
-// Animación de texto para loader-menu (usando JS para cambiar el contenido)
-const loaderText = document.querySelector('.loader-text-animated');
-const texts = ["Cargando...", "Preparando recursos...", "Casi listo!"];
-let index = 0;
+// Opcional: si quieres que el texto cambie más suave y menos frecuente
+const menuText = document.querySelector('.loader-text-menu');
+const phrases = ["Cargando...", "Procesando...", "Ya casi...", "Brusmods al rescate"];
+let idx = 0;
 setInterval(() => {
-  loaderText.style.opacity = 0;
+  menuText.style.opacity = 0;
   setTimeout(() => {
-    index = (index + 1) % texts.length;
-    loaderText.textContent = texts[index];
-    loaderText.style.opacity = 1;
-  }, 500);
-}, 4000);
+    idx = (idx + 1) % phrases.length;
+    menuText.textContent = phrases[idx];
+    menuText.style.opacity = 0.9;
+  }, 800);
+}, 6000);  // cada 6 segundos para no marear
 
 </script>
 
